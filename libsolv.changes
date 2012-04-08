@@ -1,0 +1,3 @@
+* Wed Mar 28 2012 Marko Saukko <sage@merproject.org> - 0.0.0
+- Initial packaging based on libsolv-0.0.0-7.1.src.rpm from openSUSE factory.
+- Part of MER#76

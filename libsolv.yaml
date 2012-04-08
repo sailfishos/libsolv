@@ -1,0 +1,86 @@
+Name: libsolv
+Summary: A new approach to package dependency solving
+Version: 0.0.0
+Release: 3.3.3
+Group: Development/Libraries/C and C++
+License: BSD 3-Clause
+URL: git://gitorious.org/opensuse/libsolv.git
+Sources:
+    - libsolv-%{version}.tar.bz2
+Description: A new approach to package dependency solving.
+
+PkgConfigBR:
+    - rpm
+    - zlib
+PkgBR:
+    - db4-devel
+    - expat-devel
+    - cmake
+    - gcc-c++
+    - perl-devel
+    - python-devel
+    - swig
+Builder: cmake
+ConfigOptions:
+    - -DFEDORA=1 
+    - -DENABLE_HELIXREPO=1
+    - -DCMAKE_INSTALL_PREFIX=%{_prefix}
+    - -DLIB=%{_lib}
+    - -DCMAKE_VERBOSE_MAKEFILE=TRUE 
+    - -DCMAKE_BUILD_TYPE=Release 
+    - -DENABLE_PERL=1 
+    - -DENABLE_PYTHON=1 
+    - -DUSE_VENDORDIRS=1 
+    - -DCMAKE_SKIP_RPATH=1
+NoFiles: true
+SubPackages:
+    - Name: demo
+      Summary: Applications demoing the libsolv library
+      Group: System/Management
+      Description: Applications demoing the libsolv library.
+      Requires:
+          - curl
+          - gnupg2
+
+    - Name: python-solv
+      AsWholeName: yes
+      Summary: Python bindings for the libsolv library
+      Group: Development/Languages/Python
+      Description: Python bindings for sat solver.
+
+    - Name: devel
+      Summary: A new approach to package dependency solving
+      Group: Development/Libraries/C and C++
+      Description: Development files for libsolv, a new approach to package dependency solving.
+      Requires:
+          - libsolv-tools = %version
+          - libsolv0 = %version
+          - rpm-devel
+
+    - Name: perl-solv
+      AsWholeName: yes
+      Summary: Perl bindings for the libsolv library
+      Group: Development/Languages/Perl
+      Description: Perl bindings for sat solver.
+      Requires:
+          - perl = %{perl_version}
+
+    - Name: libsolv0
+      AsWholeName: yes
+      Summary: A new approach to package dependency solving
+      Group: Development/Libraries/C and C++
+      Description: A new approach to package dependency solving.
+
+    - Name: tools
+      Summary: A new approach to package dependency solving
+      Group: Development/Libraries/C and C++
+      Description: A new approach to package dependency solving.
+      Requires:
+          - gzip
+          - bzip2
+          - coreutils
+      Provides:
+          - satsolver-tools = 0.18
+      Obsoletes:
+          - satsolver-tools < 0.18
+
