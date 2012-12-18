@@ -1,3 +1,7 @@
+* Tue Dec 18 2012 David Greaves <david@dgreaves.com> - 0.1.0
+- Ensure the current libsolv0 version is installed
+  Fixes MER#654
+
 * Thu Sep 06 2012 Marko Saukko <marko.saukko@jollamobile.com> - 0.1.0
 - Update to version 0.1.0
 

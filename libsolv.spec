@@ -36,6 +36,7 @@ Summary:    Applications demoing the libsolv library
 Group:      System/Management
 Requires:   curl
 Requires:   gnupg2
+Requires:   libsolv0 = %version
 
 %description demo
 Applications demoing the libsolv library.
@@ -43,6 +44,7 @@ Applications demoing the libsolv library.
 %package -n python-solv
 Summary:    Python bindings for the libsolv library
 Group:      Development/Languages/Python
+Requires:   libsolv0 = %version
 
 %description -n python-solv
 Python bindings for sat solver.
@@ -61,6 +63,7 @@ Development files for libsolv, a new approach to package dependency solving.
 Summary:    Perl bindings for the libsolv library
 Group:      Development/Languages/Perl
 Requires:   perl = %{perl_version}
+Requires:   libsolv0 = %version
 
 %description -n perl-solv
 Perl bindings for sat solver.
@@ -80,6 +83,7 @@ Group:      Development/Libraries/C and C++
 Requires:   gzip
 Requires:   bzip2
 Requires:   coreutils
+Requires:   libsolv0 = %version
 Provides:   satsolver-tools = 0.18
 Obsoletes:   satsolver-tools < 0.18
 

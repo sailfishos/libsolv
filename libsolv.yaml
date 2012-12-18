@@ -41,12 +41,15 @@ SubPackages:
       Requires:
           - curl
           - gnupg2
+          - libsolv0 = %version
 
     - Name: python-solv
       AsWholeName: yes
       Summary: Python bindings for the libsolv library
       Group: Development/Languages/Python
       Description: Python bindings for sat solver.
+      Requires:
+          - libsolv0 = %version
 
     - Name: devel
       Summary: A new approach to package dependency solving
@@ -64,6 +67,7 @@ SubPackages:
       Description: Perl bindings for sat solver.
       Requires:
           - perl = %{perl_version}
+          - libsolv0 = %version
 
     - Name: libsolv0
       AsWholeName: yes
@@ -79,6 +83,7 @@ SubPackages:
           - gzip
           - bzip2
           - coreutils
+          - libsolv0 = %version
       Provides:
           - satsolver-tools = 0.18
       Obsoletes:
