@@ -1,0 +1,12 @@
+diff -Naur libsolv-0.1.0-orig/src/poolarch.c libsolv-0.1.0/src/poolarch.c
+--- libsolv-0.1.0-orig/src/poolarch.c	2012-06-25 15:17:22.000000000 +0300
++++ libsolv-0.1.0/src/poolarch.c	2013-07-02 21:21:34.493402720 +0300
+@@ -31,7 +31,7 @@
+   "ia64",	"ia64:i686:i586:i486:i386",
+   "ppc64",	"ppc64:ppc",
+   "ppc",	"ppc",
+-  "armv7tnhl",	"arvm7tnhl:armv7thl:armv7nhl:armv7hl",
++  "armv7tnhl",	"armv7tnhl:armv7thl:armv7nhl:armv7hl",
+   "armv7thl",	"armv7thl:armv7hl",
+   "armv7nhl",	"armv7nhl:armv7hl",
+   "armv7hl",	"armv7hl",

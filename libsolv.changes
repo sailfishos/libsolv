@@ -1,3 +1,6 @@
+* Tue Jul 02 2013 Islam Amer <islam.amer@jollamobille.com> - 0.1.0
+- fix typo in armv7tnhl compatibility resolving spotted by Carsten
+
 * Tue Dec 18 2012 David Greaves <david@dgreaves.com> - 0.1.0
 - Ensure the current libsolv0 version is installed
   Fixes MER#654
