@@ -1,3 +1,6 @@
+* Wed Aug 07 2013 Mikko Hurskainen <mikko.hurskainen@nomovok.com> - 0.1.0 
+- Add support for mipsel
+
 * Tue Jul 02 2013 Islam Amer <islam.amer@jollamobille.com> - 0.1.0
 - fix typo in armv7tnhl compatibility resolving spotted by Carsten
 

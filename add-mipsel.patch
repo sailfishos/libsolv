@@ -1,0 +1,12 @@
+Index: b/src/poolarch.c
+===================================================================
+--- a/src/poolarch.c	2013-08-07 16:49:50.087410408 +0300
++++ b/src/poolarch.c	2013-08-07 16:56:34.843420053 +0300
+@@ -52,6 +52,7 @@
+   "sparcv9",	"sparcv9:sparcv8:sparc",
+   "sparcv8",	"sparcv8:sparc",
+   "sparc",	"sparc",
++  "mipsel",	"mipsel",
+   0
+ };
+ 

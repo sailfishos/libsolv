@@ -1,7 +1,7 @@
 Name: libsolv
 Summary: A new approach to package dependency solving
 Version: 0.1.0
-Release: 1
+Release: 2
 Group: Development/Libraries/C and C++
 License: BSD 3-Clause
 URL: git://gitorious.org/opensuse/libsolv.git
@@ -9,6 +9,7 @@ Sources:
     - libsolv-%{version}.tar.bz2
 Patches:
     - fix-armv7tnhl-typo.patch
+    - add-mipsel.patch
 Description: A new approach to package dependency solving.
 
 PkgConfigBR:
