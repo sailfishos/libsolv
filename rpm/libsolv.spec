@@ -64,6 +64,9 @@ Summary:    A new approach to package dependency solving
 Group:      Development/Libraries/C and C++
 Requires(post): /sbin/ldconfig
 Requires(postun): /sbin/ldconfig
+# libzypp 12.2.0 doesn't work with this version of libsolv (it crashes),
+# so make sure we have at least 14.35.0 (the new version) installed.
+Conflicts:  libzypp < 14.35.0
 
 %description -n libsolv0
 A new approach to package dependency solving.
