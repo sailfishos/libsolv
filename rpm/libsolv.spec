@@ -2,8 +2,8 @@
 
 Name:       libsolv
 Summary:    A new approach to package dependency solving
-Version:    0.6.8
-Release:    2
+Version:    0.6.23
+Release:    1
 Group:      Development/Libraries/C and C++
 License:    BSD 3-Clause
 URL:        https://github.com/openSUSE/libsolv
@@ -129,6 +129,7 @@ export NO_BRP_STRIP_DEBUG=true
 %{_includedir}/solv
 %{_bindir}/helix2solv
 %{_datadir}/cmake/Modules/*
+%{_libdir}/pkgconfig/libsolv.pc
 %{_datadir}/man/man?/*.?.gz
 
 %files -n perl-solv
