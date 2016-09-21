@@ -7,7 +7,7 @@ Release:    2
 Group:      Development/Libraries/C and C++
 License:    BSD 3-Clause
 URL:        https://github.com/openSUSE/libsolv
-Source0:    libsolv-%{version}.tar.gz
+Source0:    %{name}-%{version}.tar.gz
 BuildRequires:  pkgconfig(rpm)
 BuildRequires:  pkgconfig(zlib)
 BuildRequires:  db4-devel
@@ -85,10 +85,9 @@ Obsoletes:  satsolver-tools < 0.18
 A new approach to package dependency solving.
 
 %prep
-%setup -q -n %{name}-%{version}
+%setup -q -n %{name}-%{version}/upstream
 
 %build
-cd libsolv
 %cmake .  \
     -DFEDORA=1 \
     -DENABLE_HELIXREPO=1 \
@@ -105,7 +104,6 @@ make %{?jobs:-j%jobs}
 
 %install
 rm -rf %{buildroot}
-cd libsolv
 %make_install
 
 # we want to leave the .a file untouched
@@ -139,7 +137,7 @@ export NO_BRP_STRIP_DEBUG=true
 
 %files -n libsolv0
 %defattr(-,root,root,-)
-%doc libsolv/LICENSE*
+%doc LICENSE*
 %{_libdir}/libsolv.so.*
 %{_libdir}/libsolvext.so.*
 
