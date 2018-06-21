@@ -2,7 +2,7 @@
 
 Name:       libsolv
 Summary:    A new approach to package dependency solving
-Version:    0.6.23
+Version:    0.6.34
 Release:    1
 Group:      Development/Libraries/C and C++
 License:    BSD 3-Clause
@@ -11,13 +11,13 @@ Source0:    %{name}-%{version}.tar.gz
 BuildRequires:  pkgconfig(rpm)
 BuildRequires:  pkgconfig(zlib)
 BuildRequires:  db4-devel
-BuildRequires:  expat-devel
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  perl-devel
 BuildRequires:  python-devel
 BuildRequires:  swig
 BuildRequires:  cmake
+BuildRequires:  libxml2-devel
 
 %description
 A new approach to package dependency solving.
@@ -90,7 +90,7 @@ A new approach to package dependency solving.
 %build
 %cmake .  \
     -DFEDORA=1 \
-    -DENABLE_HELIXREPO=1 \
+    -DENABLE_SUSEREPO=1 -DENABLE_HELIXREPO=1 \
     -DCMAKE_INSTALL_PREFIX=%{_prefix} \
     -DLIB=%{_lib} \
     -DCMAKE_VERBOSE_MAKEFILE=TRUE \
@@ -98,7 +98,8 @@ A new approach to package dependency solving.
     -DENABLE_PERL=1 \
     -DENABLE_PYTHON=1 \
     -DUSE_VENDORDIRS=1 \
-    -DCMAKE_SKIP_RPATH=1
+    -DCMAKE_SKIP_RPATH=1 \
+    -DWITH_LIBXML2=1 \
 
 make %{?jobs:-j%jobs}
 
@@ -130,6 +131,7 @@ export NO_BRP_STRIP_DEBUG=true
 %{_bindir}/helix2solv
 %{_datadir}/cmake/Modules/*
 %{_libdir}/pkgconfig/libsolv.pc
+%{_libdir}/pkgconfig/libsolvext.pc
 %{_datadir}/man/man?/*.?.gz
 
 %files -n perl-solv
