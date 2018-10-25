@@ -2,7 +2,7 @@
 
 Name:       libsolv
 Summary:    A new approach to package dependency solving
-Version:    0.6.34
+Version:    0.6.35
 Release:    1
 Group:      Development/Libraries/C and C++
 License:    BSD 3-Clause
