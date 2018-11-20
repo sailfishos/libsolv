@@ -10,7 +10,8 @@ URL:        https://github.com/openSUSE/libsolv
 Source0:    %{name}-%{version}.tar.gz
 BuildRequires:  pkgconfig(rpm)
 BuildRequires:  pkgconfig(zlib)
-BuildRequires:  db4-devel
+BuildRequires:  bzip2-devel
+BuildRequires:  xz-devel
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  perl-devel
@@ -90,6 +91,14 @@ A new approach to package dependency solving.
 %build
 %cmake .  \
     -DFEDORA=1 \
+    -DENABLE_COMPS=1 \
+    -DENABLE_APPDATA=1 \
+    -DENABLE_COMPLEX_DEPS=1 \
+    -DENABLE_RPMDB_BYRPMHEADER=1 \
+    -DENABLE_RPMDB_LIBRPM=1 \
+    -DENABLE_RPMPKG_LIBRPM=1 \
+    -DENABLE_LZMA_COMPRESSION=1 \
+    -DENABLE_BZIP2_COMPRESSION=1 \
     -DENABLE_SUSEREPO=1 -DENABLE_HELIXREPO=1 \
     -DCMAKE_INSTALL_PREFIX=%{_prefix} \
     -DLIB=%{_lib} \
