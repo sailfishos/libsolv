@@ -19,6 +19,8 @@ BuildRequires:  swig
 BuildRequires:  cmake
 BuildRequires:  libxml2-devel
 
+Patch1:  0001-Fix-repo2solv-to-work-with-Busybox-find-tool.patch
+
 %description
 A new approach to package dependency solving.
 
@@ -86,6 +88,7 @@ A new approach to package dependency solving.
 
 %prep
 %setup -q -n %{name}-%{version}/upstream
+%patch1 -p1
 
 %build
 %cmake .  \
