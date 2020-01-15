@@ -1,10 +1,9 @@
-%global python_sitearch %(python -c "from distutils.sysconfig import get_python_lib; print get_python_lib(True);")
+%global python3_sitearch %(python3 -c "from distutils.sysconfig import get_python_lib; print(get_python_lib(True))")
 
 Name:       libsolv
 Summary:    A new approach to package dependency solving
-Version:    0.6.35
+Version:    0.7.11
 Release:    1
-Group:      Development/Libraries/C and C++
 License:    BSD
 URL:        https://github.com/openSUSE/libsolv
 Source0:    %{name}-%{version}.tar.gz
@@ -15,12 +14,10 @@ BuildRequires:  xz-devel
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  perl-devel
-BuildRequires:  python-devel
+BuildRequires:  python3-devel
 BuildRequires:  swig
 BuildRequires:  cmake
 BuildRequires:  libxml2-devel
-
-Patch1:  0001-Fix-repo2solv-to-work-with-Busybox-find-tool.patch
 
 %description
 A new approach to package dependency solving.
@@ -35,13 +32,13 @@ Requires:   libsolv0 = %version
 %description demo
 Applications demoing the libsolv library.
 
-%package -n python-solv
+%package -n python3-solv
 Summary:    Python bindings for the libsolv library
 Group:      Development/Languages/Python
 Requires:   libsolv0 = %version
 
-%description -n python-solv
-Python bindings for sat solver.
+%description -n python3-solv
+Python3 bindings for sat solver.
 
 %package devel
 Summary:    A new approach to package dependency solving
@@ -88,8 +85,7 @@ Obsoletes:  satsolver-tools < 0.18
 A new approach to package dependency solving.
 
 %prep
-%setup -q -n %{name}-%{version}/upstream
-%patch1 -p1
+%autosetup -p1 -n %{name}-%{version}/upstream
 
 %build
 %cmake .  \
@@ -108,7 +104,7 @@ A new approach to package dependency solving.
     -DCMAKE_VERBOSE_MAKEFILE=TRUE \
     -DCMAKE_BUILD_TYPE=Release \
     -DENABLE_PERL=1 \
-    -DENABLE_PYTHON=1 \
+    -DENABLE_PYTHON3=1 \
     -DUSE_VENDORDIRS=1 \
     -DCMAKE_SKIP_RPATH=1 \
     -DWITH_LIBXML2=1 \
@@ -127,13 +123,17 @@ export NO_BRP_STRIP_DEBUG=true
 %postun -n libsolv0 -p /sbin/ldconfig
 
 
-%files demo
+%files -n libsolv0
 %defattr(-,root,root,-)
-%{_bindir}/solv
+%doc LICENSE*
+%{_libdir}/libsolv.so.*
+%{_libdir}/libsolvext.so.*
 
-%files -n python-solv
+%files tools
 %defattr(-,root,root,-)
-%{python_sitearch}/*
+%exclude %{_bindir}/helix2solv
+%exclude %{_bindir}/solv
+%{_bindir}/*
 
 %files devel
 %defattr(-,root,root,-)
@@ -146,18 +146,15 @@ export NO_BRP_STRIP_DEBUG=true
 %{_libdir}/pkgconfig/libsolvext.pc
 %{_datadir}/man/man?/*.?.gz
 
+%files demo
+%defattr(-,root,root,-)
+%{_bindir}/solv
+
 %files -n perl-solv
 %defattr(-,root,root,-)
 %{perl_vendorarch}/*
 
-%files -n libsolv0
+%files -n python3-solv
 %defattr(-,root,root,-)
-%doc LICENSE*
-%{_libdir}/libsolv.so.*
-%{_libdir}/libsolvext.so.*
-
-%files tools
-%defattr(-,root,root,-)
-%exclude %{_bindir}/helix2solv
-%exclude %{_bindir}/solv
-%{_bindir}/*
+%{python3_sitearch}/*solv*
+%{python3_sitearch}/__pycache__/solv.*
