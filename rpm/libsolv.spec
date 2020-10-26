@@ -2,7 +2,7 @@
 
 Name:       libsolv
 Summary:    A new approach to package dependency solving
-Version:    0.7.11
+Version:    0.7.16
 Release:    1
 License:    BSD
 URL:        https://github.com/openSUSE/libsolv
@@ -24,7 +24,6 @@ A new approach to package dependency solving.
 
 %package demo
 Summary:    Applications demoing the libsolv library
-Group:      System/Management
 Requires:   curl
 Requires:   gnupg2
 Requires:   libsolv0 = %version
@@ -34,7 +33,6 @@ Applications demoing the libsolv library.
 
 %package -n python3-solv
 Summary:    Python bindings for the libsolv library
-Group:      Development/Languages/Python
 Requires:   libsolv0 = %version
 
 %description -n python3-solv
@@ -42,8 +40,6 @@ Python3 bindings for sat solver.
 
 %package devel
 Summary:    A new approach to package dependency solving
-Group:      Development/Libraries/C and C++
-Requires:   libsolv-tools = %version
 Requires:   libsolv0 = %version
 Requires:   rpm-devel
 
@@ -52,7 +48,6 @@ Development files for libsolv, a new approach to package dependency solving.
 
 %package -n perl-solv
 Summary:    Perl bindings for the libsolv library
-Group:      Development/Languages/Perl
 Requires:   perl = %{perl_version}
 Requires:   libsolv0 = %version
 
@@ -61,7 +56,6 @@ Perl bindings for sat solver.
 
 %package -n libsolv0
 Summary:    A new approach to package dependency solving
-Group:      Development/Libraries/C and C++
 Requires(post): /sbin/ldconfig
 Requires(postun): /sbin/ldconfig
 # libzypp 12.2.0 doesn't work with this version of libsolv (it crashes),
@@ -73,7 +67,6 @@ A new approach to package dependency solving.
 
 %package tools
 Summary:    A new approach to package dependency solving
-Group:      Development/Libraries/C and C++
 Requires:   gzip
 Requires:   bzip2
 Requires:   coreutils
@@ -109,10 +102,9 @@ A new approach to package dependency solving.
     -DCMAKE_SKIP_RPATH=1 \
     -DWITH_LIBXML2=1 \
 
-make %{?jobs:-j%jobs}
+%make_build
 
 %install
-rm -rf %{buildroot}
 %make_install
 
 # we want to leave the .a file untouched
@@ -125,7 +117,7 @@ export NO_BRP_STRIP_DEBUG=true
 
 %files -n libsolv0
 %defattr(-,root,root,-)
-%doc LICENSE*
+%license LICENSE*
 %{_libdir}/libsolv.so.*
 %{_libdir}/libsolvext.so.*
 
