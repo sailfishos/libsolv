@@ -1,5 +1,3 @@
-%global python3_sitearch %(python3 -c "from distutils.sysconfig import get_python_lib; print(get_python_lib(True))")
-
 Name:       libsolv
 Summary:    A new approach to package dependency solving
 Version:    0.7.16
