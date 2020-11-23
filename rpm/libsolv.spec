@@ -19,6 +19,14 @@ BuildRequires:  swig
 BuildRequires:  cmake
 BuildRequires:  libxml2-devel
 
+Requires(post): /sbin/ldconfig
+Requires(postun): /sbin/ldconfig
+# libzypp 12.2.0 doesn't work with this version of libsolv (it crashes),
+# so make sure we have at least 14.35.0 (the new version) installed.
+Conflicts:  libzypp < 14.35.0
+Obsoletes:  libsolv0
+Provides:   libsolv0
+
 %description
 A new approach to package dependency solving.
 
@@ -26,21 +34,21 @@ A new approach to package dependency solving.
 Summary:    Applications demoing the libsolv library
 Requires:   curl
 Requires:   gnupg2
-Requires:   libsolv0 = %version
+Requires:   %{name} = %{version}
 
 %description demo
 Applications demoing the libsolv library.
 
 %package -n python3-solv
 Summary:    Python bindings for the libsolv library
-Requires:   libsolv0 = %version
+Requires:   %{name} = %{version}
 
 %description -n python3-solv
 Python3 bindings for sat solver.
 
 %package devel
 Summary:    A new approach to package dependency solving
-Requires:   libsolv0 = %version
+Requires:   %{name} = %{version}
 Requires:   rpm-devel
 
 %description devel
@@ -49,28 +57,17 @@ Development files for libsolv, a new approach to package dependency solving.
 %package -n perl-solv
 Summary:    Perl bindings for the libsolv library
 Requires:   perl = %{perl_version}
-Requires:   libsolv0 = %version
+Requires:   %{name} = %{version}
 
 %description -n perl-solv
 Perl bindings for sat solver.
-
-%package -n libsolv0
-Summary:    A new approach to package dependency solving
-Requires(post): /sbin/ldconfig
-Requires(postun): /sbin/ldconfig
-# libzypp 12.2.0 doesn't work with this version of libsolv (it crashes),
-# so make sure we have at least 14.35.0 (the new version) installed.
-Conflicts:  libzypp < 14.35.0
-
-%description -n libsolv0
-A new approach to package dependency solving.
 
 %package tools
 Summary:    A new approach to package dependency solving
 Requires:   gzip
 Requires:   bzip2
 Requires:   coreutils
-Requires:   libsolv0 = %version
+Requires:   %{name} = %{version}
 Provides:   satsolver-tools = 0.18
 Obsoletes:  satsolver-tools < 0.18
 
@@ -110,12 +107,12 @@ A new approach to package dependency solving.
 # we want to leave the .a file untouched
 export NO_BRP_STRIP_DEBUG=true
 
-%post -n libsolv0 -p /sbin/ldconfig
+%post -p /sbin/ldconfig
 
-%postun -n libsolv0 -p /sbin/ldconfig
+%postun -p /sbin/ldconfig
 
 
-%files -n libsolv0
+%files
 %defattr(-,root,root,-)
 %license LICENSE*
 %{_libdir}/libsolv.so.*
