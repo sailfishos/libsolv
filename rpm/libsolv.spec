@@ -1,6 +1,6 @@
 Name:       libsolv
 Summary:    A new approach to package dependency solving
-Version:    0.7.16
+Version:    0.7.17
 Release:    1
 License:    BSD
 URL:        https://github.com/openSUSE/libsolv
@@ -81,9 +81,11 @@ A new approach to package dependency solving.
     -DENABLE_COMPS=1 \
     -DENABLE_APPDATA=1 \
     -DENABLE_COMPLEX_DEPS=1 \
+    -DENABLE_RPMDB=1 \
     -DENABLE_RPMDB_BYRPMHEADER=1 \
     -DENABLE_RPMDB_LIBRPM=1 \
     -DENABLE_RPMPKG_LIBRPM=1 \
+    -DENABLE_RPMMD=1 \
     -DENABLE_LZMA_COMPRESSION=1 \
     -DENABLE_BZIP2_COMPRESSION=1 \
     -DENABLE_SUSEREPO=1 -DENABLE_HELIXREPO=1 \
