@@ -1,6 +1,6 @@
 Name:       libsolv
 Summary:    A new approach to package dependency solving
-Version:    0.7.17
+Version:    0.7.20
 Release:    1
 License:    BSD
 URL:        https://github.com/openSUSE/libsolv
@@ -22,8 +22,6 @@ Requires(postun): /sbin/ldconfig
 # libzypp 12.2.0 doesn't work with this version of libsolv (it crashes),
 # so make sure we have at least 14.35.0 (the new version) installed.
 Conflicts:  libzypp < 14.35.0
-Obsoletes:  libsolv0
-Provides:   libsolv0
 
 %description
 A new approach to package dependency solving.
@@ -32,21 +30,21 @@ A new approach to package dependency solving.
 Summary:    Applications demoing the libsolv library
 Requires:   curl
 Requires:   gnupg2
-Requires:   %{name} = %{version}
+Requires:   %{name} = %{version}-%{release}
 
 %description demo
 Applications demoing the libsolv library.
 
 %package -n python3-solv
 Summary:    Python bindings for the libsolv library
-Requires:   %{name} = %{version}
+Requires:   %{name} = %{version}-%{release}
 
 %description -n python3-solv
 Python3 bindings for sat solver.
 
 %package devel
 Summary:    A new approach to package dependency solving
-Requires:   %{name} = %{version}
+Requires:   %{name} = %{version}-%{release}
 Requires:   rpm-devel
 
 %description devel
@@ -55,7 +53,7 @@ Development files for libsolv, a new approach to package dependency solving.
 %package -n perl-solv
 Summary:    Perl bindings for the libsolv library
 Requires:   perl = %{perl_version}
-Requires:   %{name} = %{version}
+Requires:   %{name} = %{version}-%{release}
 
 %description -n perl-solv
 Perl bindings for sat solver.
@@ -65,9 +63,7 @@ Summary:    A new approach to package dependency solving
 Requires:   gzip
 Requires:   bzip2
 Requires:   coreutils
-Requires:   %{name} = %{version}
-Provides:   satsolver-tools = 0.18
-Obsoletes:  satsolver-tools < 0.18
+Requires:   %{name} = %{version}-%{release}
 
 %description tools
 A new approach to package dependency solving.
