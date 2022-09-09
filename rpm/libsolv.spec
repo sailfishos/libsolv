@@ -3,7 +3,7 @@ Summary:    A new approach to package dependency solving
 Version:    0.7.20
 Release:    1
 License:    BSD
-URL:        https://github.com/openSUSE/libsolv
+URL:        https://github.com/sailfishos/libsolv
 Source0:    %{name}-%{version}.tar.gz
 BuildRequires:  pkgconfig(rpm)
 BuildRequires:  pkgconfig(zlib)
