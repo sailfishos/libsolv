@@ -72,6 +72,10 @@ A new approach to package dependency solving.
 %autosetup -p1 -n %{name}-%{version}/upstream
 
 %build
+# NDEBUG use has been suppressed by upstream commit 2d2afc33b5 for an
+# unkown reason. It is required to ensure build reproducibility.
+CFLAGS="$CFLAGS -DNDEBUG"
+
 %cmake .  \
     -DFEDORA=1 \
     -DENABLE_COMPS=1 \
