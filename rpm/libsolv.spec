@@ -3,7 +3,7 @@ Summary:    A new approach to package dependency solving
 Version:    0.7.20
 Release:    1
 License:    BSD
-URL:        https://github.com/openSUSE/libsolv
+URL:        https://github.com/sailfishos/libsolv
 Source0:    %{name}-%{version}.tar.gz
 BuildRequires:  pkgconfig(rpm)
 BuildRequires:  pkgconfig(zlib)
@@ -72,6 +72,10 @@ A new approach to package dependency solving.
 %autosetup -p1 -n %{name}-%{version}/upstream
 
 %build
+# NDEBUG use has been suppressed by upstream commit 2d2afc33b5 for an
+# unkown reason. It is required to ensure build reproducibility.
+CFLAGS="$CFLAGS -DNDEBUG"
+
 %cmake .  \
     -DFEDORA=1 \
     -DENABLE_COMPS=1 \
