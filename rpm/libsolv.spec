@@ -1,6 +1,6 @@
 Name:       libsolv
 Summary:    A new approach to package dependency solving
-Version:    0.7.20
+Version:    0.7.31
 Release:    1
 License:    BSD
 URL:        https://github.com/sailfishos/libsolv
@@ -113,19 +113,16 @@ export NO_BRP_STRIP_DEBUG=true
 
 
 %files
-%defattr(-,root,root,-)
 %license LICENSE*
 %{_libdir}/libsolv.so.*
 %{_libdir}/libsolvext.so.*
 
 %files tools
-%defattr(-,root,root,-)
 %exclude %{_bindir}/helix2solv
 %exclude %{_bindir}/solv
 %{_bindir}/*
 
 %files devel
-%defattr(-,root,root,-)
 %{_libdir}/libsolv.so
 %{_libdir}/libsolvext.so
 %{_includedir}/solv
@@ -136,14 +133,11 @@ export NO_BRP_STRIP_DEBUG=true
 %{_datadir}/man/man?/*.?.gz
 
 %files demo
-%defattr(-,root,root,-)
 %{_bindir}/solv
 
 %files -n perl-solv
-%defattr(-,root,root,-)
 %{perl_vendorarch}/*
 
 %files -n python3-solv
-%defattr(-,root,root,-)
 %{python3_sitearch}/*solv*
 %{python3_sitearch}/__pycache__/solv.*
