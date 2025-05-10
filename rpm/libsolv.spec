@@ -1,6 +1,6 @@
 Name:       libsolv
 Summary:    A new approach to package dependency solving
-Version:    0.7.31
+Version:    0.7.32
 Release:    1
 License:    BSD
 URL:        https://github.com/sailfishos/libsolv
@@ -76,7 +76,7 @@ A new approach to package dependency solving.
 # unkown reason. It is required to ensure build reproducibility.
 CFLAGS="$CFLAGS -DNDEBUG"
 
-%cmake .  \
+%cmake \
     -DFEDORA=1 \
     -DENABLE_COMPS=1 \
     -DENABLE_APPDATA=1 \
@@ -99,10 +99,10 @@ CFLAGS="$CFLAGS -DNDEBUG"
     -DCMAKE_SKIP_RPATH=1 \
     -DWITH_LIBXML2=1 \
 
-%make_build
+%cmake_build
 
 %install
-%make_install
+%cmake_install
 
 # we want to leave the .a file untouched
 export NO_BRP_STRIP_DEBUG=true
